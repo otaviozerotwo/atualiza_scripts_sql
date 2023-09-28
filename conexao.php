@@ -1,5 +1,5 @@
 <?php
-    phpinfo();
+    // phpinfo();
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //verifica se um diretório foi selecionado pelo usuário
@@ -11,7 +11,7 @@
             $db_pass = '1234';
 
             //diretório onde os scripts serão lidos
-            $sql_folder = 'D:\DEVOPS\PROJETOS\atualiza_bd\scripts';
+            $sql_folder = $_FILES["sql_folder"]["tmp_name"];
 
             //conexão com o banco
             try {
@@ -24,7 +24,10 @@
                 $sql_files = glob($sql_folder . '*.sql');
 
                 foreach ($sql_files as $sql_file) {
+                    echo "Executando o arquivo '$sql_file'...\n";
+                    
                     $sql = file_get_contents($sql_file);
+                    
                     //executa o conteúdo do script SQL
                     $result = $db->exec($sql);
 
@@ -32,8 +35,13 @@
                         echo "Arquivo '$sql_file' executado com sucesso.\n";
                     } else {
                         echo "Erro ao executar o arquivo 'sql_file'.\n";
+                        
+                        // Mensagem de erro específica do banco de dados
+                        echo "Erro do banco de dados: " . $db->errorInfo()[2] . "\n"; 
                     }
                 }
+                
+                $db = null;
             } catch (PDOException $e) {
                 echo "Erro na conexão com o banco de dados: " . $e->getMessage();
             }
