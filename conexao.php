@@ -1,4 +1,6 @@
 <?php
+    phpinfo();
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //verifica se um diretório foi selecionado pelo usuário
         if (isset($_FILES["sql_folder"]) && $_FILES["sql_folder"]["error"] == 0) {
