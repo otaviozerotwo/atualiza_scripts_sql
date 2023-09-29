@@ -6,7 +6,7 @@
     <title>AtualizaBD</title>
 </head>
 <body>
-    <form action="conexao.php" method="POST" enctype="multipart/form-data">
+    <form action="teste.php" method="POST" enctype="multipart/form-data">
         <label for="sql_folder">Escolha a pasta:</label>
         <input type="file" name="sql_folder" id="sql_folder" directory webkitdirectory>
         <br>
