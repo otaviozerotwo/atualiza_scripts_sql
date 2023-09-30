@@ -6,11 +6,11 @@
     <title>AtualizaBD</title>
 </head>
 <body>
-    <form action="teste.php" method="POST" enctype="multipart/form-data">
-        <label for="sql_folder">Escolha a pasta:</label>
-        <input type="file" name="sql_folder" id="sql_folder" directory webkitdirectory>
+    <form action="processamento.php" method="POST" enctype="multipart/form-data">
+        <label for="scripts_folder">Escolha a pasta:</label>
+        <input type="file" name="scripts_folder[]" id="scripts_folder" directory webkitdirectory multiple>
         <br>
-        <input type="submit" value="Enviar">
+        <input type="submit" name="action" value="Enviar">
     </form>
 </body>
 </html>
